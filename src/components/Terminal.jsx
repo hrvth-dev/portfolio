@@ -58,7 +58,7 @@ A weboldal jelenleg nem elérhető.
   return (
     <div className="w-full max-w-full sm:max-w-3xl mx-auto mt-6 sm:mt-10 mb-5 px-4 sm:px-0">
       <div className="bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-[#333]">
-        {/* Terminal Header */}
+
         <div className="bg-[#323232] px-4 py-2 flex items-center">
           <div className="flex space-x-2">
             <div className="w-3 h-3 bg-[#ff5f56] rounded-full"></div>
@@ -67,7 +67,6 @@ A weboldal jelenleg nem elérhető.
           </div>
         </div>
 
-        {/* Terminal Content */}
         <div className="p-4 font-mono text-sm h-[320px] sm:h-[480px] overflow-y-auto bg-[#1e1e1e] text-center">
           {displayedLines.map((line, index) => (
             <div
