@@ -51,7 +51,7 @@ A weboldal jelenleg nem elérhető.
       setTimeout(() => {
         setCurrentLineIndex((prev) => prev + 1);
         setCurrentCharIndex(0);
-      }, 500);
+      }, 600);
     }
   }, [currentLineIndex, currentCharIndex]);
 
@@ -68,7 +68,7 @@ A weboldal jelenleg nem elérhető.
         </div>
 
         {/* Terminal Content */}
-        <div className="p-4 font-mono text-sm h-[320px] sm:h-[480px] overflow-y-auto bg-[#1e1e1e]">
+        <div className="p-4 font-mono text-sm h-[320px] sm:h-[480px] overflow-y-auto bg-[#1e1e1e] text-center">
           {displayedLines.map((line, index) => (
             <div
               key={index}
