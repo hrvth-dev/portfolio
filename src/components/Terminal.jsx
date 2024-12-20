@@ -51,7 +51,7 @@ A weboldal jelenleg nem elérhető.
       setTimeout(() => {
         setCurrentLineIndex((prev) => prev + 1);
         setCurrentCharIndex(0);
-      }, 600);
+      }, 350);
     }
   }, [currentLineIndex, currentCharIndex]);
 
