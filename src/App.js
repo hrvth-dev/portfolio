@@ -1,12 +1,31 @@
-import React from 'react';
+import { React, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import Terminal from './components/Terminal';
 
 function App() {
+
+  useEffect(() => {
+
+    gsap.set('#animation', {y:'-600px', scale:0, opacity:0});
+
+
+    gsap.to('#animation', {
+      duration:2,
+      y:'-20px',
+      ease:'power2.inOut',
+      delay:-0.3,
+      scale:1,
+      opacity:1
+  })
+
+
+  }, []);
+
   return (
     <div className="App bg-black min-h-screen text-white">
-      <header className="flex flex-col items-center p-5">
+      <header className="flex flex-col items-center p-5" id='animation'>
         <div className="w-full max-w-3xl mb-5">
-          <Terminal />
+          <Terminal/>
         </div>
 
         <div className="flex gap-4 justify-center">
