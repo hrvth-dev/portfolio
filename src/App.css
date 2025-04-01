@@ -1,32 +1,15 @@
-.App {
-  text-align: center;
+body{
   background-color: black;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.App-header h1 {
-  color: white;
-  font-size: 3rem;
-  font-family: 'Arial', sans-serif;
+#margin{
+  margin: 250px auto;
 }
 
-@keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
+#cardContainer:hover {
+  background-color: white;
 }
 
-.animated-text {
-  animation: fadeInOut 3s infinite;
-}
-
-.social{
-  color: white;
-  margin: 10px;
+#cardContainer:hover h3{
+  color: black;
 }

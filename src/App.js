@@ -1,6 +1,16 @@
+<<<<<<< HEAD
 import { React, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import Terminal from './components/Terminal';
+=======
+import React from 'react';
+import Header from "../src/components/Header.jsx";
+import AboutMe from './components/AboutMe.jsx';
+import Skills from './components/Skills.jsx';
+import Projects from './components/Projects.jsx';
+import Footer from './components/Footer.jsx'
+import "../src/App.css";
+>>>>>>> Teszt
 
 function App() {
 
@@ -22,6 +32,7 @@ function App() {
   }, []);
 
   return (
+<<<<<<< HEAD
     <div className="App bg-black min-h-screen text-white">
       <header className="flex flex-col items-center p-5" id='animation'>
         <div className="w-full max-w-3xl mb-5">
@@ -76,6 +87,13 @@ function App() {
           </a>
         </div>
       </header>
+=======
+    <div className="App">
+      <Header/>
+      <AboutMe/>
+      <Skills/>
+      <Projects/>
+>>>>>>> Teszt
     </div>
   );
 }
