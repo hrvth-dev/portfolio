@@ -7,6 +7,10 @@ import mysqlImg from '../assets/mysql.png';
 import tailwindCSSImg from '../assets/TailwindCSS.png';
 import javaScript from '../assets/js.png';
 import typescript from '../assets/typescript.png';
+import nodejs from "../assets/nodejs.webp";
+import docker from "../assets/docker.webp";
+import java from "../assets/java.png";
+
 
 export const skillData = [
   {
@@ -49,5 +53,19 @@ export const skillData = [
     id: 8,
     name: "Git",
     image: gitImg 
+  }, 
+  {
+    id: 9,
+    name: "Nodejs",
+    image: nodejs
+  },
+  {
+    id: 10,
+    name: "Docker",
+    image: docker
+  },{
+    id: 11,
+    name: "Java",
+    image: java
   }
 ];

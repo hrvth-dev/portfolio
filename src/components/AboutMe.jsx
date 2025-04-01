@@ -16,7 +16,7 @@ function AboutMe() {
       {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 2,
         ease: "power2.inOut",
       }
     );
@@ -106,21 +106,23 @@ function AboutMe() {
       >
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-8 px-4">
           <div className="w-full md:w-2/3 text-center">
-            <h2 className="text-3xl font-bold mb-4 text-center text-4xl">
+            <h2 className="text-3xl font-bold mb-5 text-center text-4xl">
               Rólam
             </h2>
             <span class="relative left-1/2 bottom-0 -translate-x-1/2 w-12 h-[2px] bg-white"></span>
             <p className="text-lg leading-relaxed">
-              Horváth Dávid vagyok, egy fiatal informatikus tanuló, aki a szoftverfejlesztés területén szeretne elhelyezkedni tanulmányai befejezése után. Kiskorom óta vonz az informatika világa, célom, hogy folyamatosan fejlődjek, új technológiákat sajátítsak el, és piacképessé tegyem magam.
+              Horváth Dávidnak hívnak, egy fiatal informatikus srác vagyok, aki a szoftverfejlesztés területén szeretne elhelyezkedni tanulmányai befejezése után. Kiskorom óta vonz az informatika világa, célom, hogy folyamatosan fejlődjek, új technológiákat sajátítsak el, valamint piacképessé tegyem magam.
             </p>
             <p className="mt-4 text-lg leading-relaxed">
             Jelenleg a fullstack fejlesztésre összpontosítok. A frontend oldalon főként React és Angular keretrendszerekkel dolgozom, amelyek lehetővé teszik modern és interaktív felhasználói felületek létrehozását. A backend fejlesztéshez Node.js-t használok, amely gyors és skálázható szerveroldali alkalmazások fejlesztésére alkalmas.
+            Programozási nyelvek terén jártas vagyok a JavaScriptben, TypeScriptben és Java nyelvekben.
+            </p>
+
+            <p className="mt-4 text-lg leading-relaxed">
+            Az adatbázisok terén is igyekszem minél szélesebb körű tapasztalatot szerezni. Adatbázisok terén  egyaránt az SQL és a NoSQL világában igyekszem elmélyíteni a tudásomat.
             </p>
             <p className="mt-4 text-lg leading-relaxed">
-            Az adatbázisok terén is igyekszem minél szélesebb körű tapasztalatot szerezni. MySQL-t és MongoDB-t használok, hiszen fontosnak tartom mind a relációs, mind a NoSQL adatbázisok ismeretét.
-            </p>
-            <p className="mt-4 text-lg leading-relaxed">
-            Szabadidőmben igyekszem tanulmányozni a legújabb technológiákat és fejlesztési módszereket.
+            Szabadidőmben igyekszem tanulmányozni a legújabb technológiákat, valamint a fejlesztési módszereket.
             </p>
           </div>
         </div>

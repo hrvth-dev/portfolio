@@ -2,6 +2,8 @@ import React from 'react';
 import Header from "../src/components/Header.jsx";
 import AboutMe from './components/AboutMe.jsx';
 import Skills from './components/Skills.jsx';
+import Projects from './components/Projects.jsx';
+import Footer from './components/Footer.jsx'
 import "../src/App.css";
 
 function App() {
@@ -10,6 +12,7 @@ function App() {
       <Header/>
       <AboutMe/>
       <Skills/>
+      <Projects/>
     </div>
   );
 }

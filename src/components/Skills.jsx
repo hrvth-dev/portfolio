@@ -50,7 +50,7 @@ const Skills = () => {
   return (
     <div
     className="max-w-6xl mx-auto px-4 py-12 m-16"
-    id="skills"
+    id="margin"
     ref={skillRef}
   >
     <h2 className="text-3xl font-bold text-center mb-8 text-white">Technológiák</h2>
@@ -75,12 +75,11 @@ const Skills = () => {
                 className="flex-none w-1/3 flex flex-col items-center p-6 rounded-lg transition-all bg-black"
                 id="cardContainer"
               >
-                <div className="text-6xl mb-4">
+                <div className="text-6xl mb-4 flex justify-center">
                   <img
                     src={skill.image}
                     alt={skill.name}
-                    className="w-16 h-16 object-cover"
-                  />
+                    className="w-20 h-20 object-contain max-w-full max-h-full"/>
                 </div>
                 <h3 className="text-xl font-semibold text-white">
                   {skill.name}
