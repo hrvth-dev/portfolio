@@ -1,20 +1,25 @@
-import React from 'react';
-import Header from "../src/components/Header.jsx";
-import AboutMe from './components/AboutMe.jsx';
-import Skills from './components/Skills.jsx';
-import Projects from './components/Projects.jsx';
-import Footer from './components/Footer.jsx'
-import "../src/App.css";
+import { useState } from "react";
+import TerminalIntro from "./components/Terminal";
+import Header from "./components/Header";
+import AboutMe from "./components/AboutMe";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
 
-function App() {
+export default function App() {
+  const [showMainContent, setShowMainContent] = useState(false);
+
   return (
-    <div className="App">
-      <Header/>
-      <AboutMe/>
-      <Skills/>
-      <Projects/>
-    </div>
+    <>
+      {showMainContent ? (
+        <>
+          <Header />
+          <AboutMe />
+          <Skills />
+          <Projects />
+        </>
+      ) : (
+        <TerminalIntro onFinish={() => setShowMainContent(true)} />
+      )}
+    </>
   );
 }
-
-export default App;
