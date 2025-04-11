@@ -1,97 +1,78 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from "react";
 
-const Terminal = () => {
-  const [displayedLines, setDisplayedLines] = useState([]);
-  const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+const texts = [
+  "Rendszer inicializálása...",
+  "Tűzfalak megkerülése...",
+  "Fejlesztői mód engedélyezése...",
+  "Forráskód betöltése...",
+  "Portfólió felület telepítése...",
+  "Kreativitás betöltése...",
+  "Frontend kapcsolat létrehozása...",
+  "Komponensek renderelése...",
+  "Üdvözöllek Horváth Dávid portfólió oldalán!"
+];
 
-  const terminalLines = [
-    { text: "$ npm run start", type: "command" },
-    { text: "> hrvth-dev.hu@0.1.0 start", type: "info" },
-    { text: "> react-scripts start", type: "info" },
-    { text: "Starting the development server...", type: "system" },
-    { text: "Attempting to connect to https://hrvth-dev.hu", type: "system" },
-    {
-      text: `Failed to compile.
 
-×
-
-FEJLESZTÉS ALATT
-A weboldal jelenleg nem elérhető.
-
-`,
-      type: "error",
-    },
-    { text: "Compiled with problems:", type: "error" },
-    { text: "ERROR in ./src/App.js", type: "error" },
-    { text: "webpack compiled with 1 error", type: "error" },
-  ];
+export default function TerminalIntro({ onFinish }) {
+  const [started, setStarted] = useState(false);
+  const [currentText, setCurrentText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const audioRef = useRef(null);
 
   useEffect(() => {
-    if (currentLineIndex >= terminalLines.length) return;
+    if (!started) return;
 
-    const currentLine = terminalLines[currentLineIndex];
-    const text = currentLine.text;
+    const audio = audioRef.current;
+    audio.play();
 
-    if (currentCharIndex < text.length) {
-      const timer = setTimeout(() => {
-        setDisplayedLines((prev) => {
-          const newLines = [...prev];
-          if (!newLines[currentLineIndex]) {
-            newLines[currentLineIndex] = { text: "", type: currentLine.type };
-          }
-          newLines[currentLineIndex].text = text.substring(0, currentCharIndex + 1);
-          return newLines;
-        });
-        setCurrentCharIndex((prev) => prev + 1);
-      }, 30);
+    const stopTimeout = setTimeout(() => {
+      audio.pause();
+      audio.currentTime = 0;
+      onFinish(); 
+    }, 20000);
 
-      return () => clearTimeout(timer);
-    } else {
-      setTimeout(() => {
-        setCurrentLineIndex((prev) => prev + 1);
-        setCurrentCharIndex(0);
-      }, 350);
+    return () => clearTimeout(stopTimeout);
+  }, [started, onFinish]);
+
+  useEffect(() => {
+    if (!started) return;
+
+    if (index < texts.length) {
+      const timeout = setTimeout(() => {
+        if (charIndex < texts[index].length) {
+          setCurrentText((prev) => prev + texts[index][charIndex]);
+          setCharIndex((prev) => prev + 1);
+        }
+      }, 60);
+
+      if (charIndex === texts[index].length) {
+        setTimeout(() => {
+          setCurrentText(""); 
+          setCharIndex(0);
+          setIndex((prev) => prev + 1);
+        }, 450);
+      }
+
+      return () => clearTimeout(timeout);
     }
-  }, [currentLineIndex, currentCharIndex]);
+  }, [charIndex, index, started]);
 
   return (
-    <div className="w-full max-w-full sm:max-w-3xl mx-auto mt-6 sm:mt-10 mb-5 px-4 sm:px-0">
-      <div className="bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-[#333]">
-
-        <div className="bg-[#323232] px-4 py-2 flex items-center">
-          <div className="flex space-x-2">
-            <div className="w-3 h-3 bg-[#ff5f56] rounded-full"></div>
-            <div className="w-3 h-3 bg-[#ffbd2e] rounded-full"></div>
-            <div className="w-3 h-3 bg-[#27c93f] rounded-full"></div>
-          </div>
-        </div>
-
-        <div className="p-4 font-mono text-sm h-[320px] sm:h-[480px] overflow-y-auto bg-[#1e1e1e] text-center">
-          {displayedLines.map((line, index) => (
-            <div
-              key={index}
-              className={`mb-1 ${
-                line.type === "error"
-                  ? "text-[#ff5555] font-semibold"
-                  : line.type === "system"
-                  ? "text-[#8be9fd]"
-                  : line.type === "command"
-                  ? "text-[#50fa7b]"
-                  : "text-[#f8f8f2]"
-              } ${line.type === "error" ? "whitespace-pre-line" : ""}`}
-            >
-              {line.type === "command" && (
-                <span className="text-[#bd93f9]">$ </span>
-              )}
-              {line.text}
-            </div>
-          ))}
-          <div className="animate-pulse text-white">_</div>
-        </div>
-      </div>
+    <div className="w-screen h-screen bg-black text-green-400 font-mono flex flex-col items-center justify-center text-lg px-4">
+      {started ? (
+        <>
+          <div className="animate-pulse">{currentText}|</div>
+          <audio ref={audioRef} src="/audio/music.mp3" />
+        </>
+      ) : (
+        <button
+          onClick={() => setStarted(true)}
+          className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-500 transition"
+        >
+          Oldal megtekintése
+        </button>
+      )}
     </div>
   );
-};
-
-export default Terminal;
+}
