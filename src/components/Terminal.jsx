@@ -62,7 +62,7 @@ export default function TerminalIntro({ onFinish }) {
     <div className="w-screen h-screen bg-black text-green-400 font-mono flex flex-col items-center justify-center text-lg px-4">
       {started ? (
         <>
-          <div className="animate-pulse">{currentText}|</div>
+          <div className="animate-pulse text-base sm:text-lg md:text-xl lg:text-2xl max-w-screen-md text-center break-words">{currentText}|</div>
           <audio ref={audioRef} src="/audio/music.mp3" />
         </>
       ) : (
