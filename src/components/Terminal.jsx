@@ -13,7 +13,7 @@ const texts = [
 ];
 
 
-export default function TerminalIntro({ onFinish }) {
+export default function TerminalIntro({ onFinish, onSkip}) {
   const [started, setStarted] = useState(false);
   const [currentText, setCurrentText] = useState("");
   const [index, setIndex] = useState(0);
@@ -30,8 +30,7 @@ export default function TerminalIntro({ onFinish }) {
       audio.pause();
       audio.currentTime = 0;
       onFinish(); 
-    }, 20000);
-
+    }, 17000);
     return () => clearTimeout(stopTimeout);
   }, [started, onFinish]);
 
@@ -44,7 +43,7 @@ export default function TerminalIntro({ onFinish }) {
           setCurrentText((prev) => prev + texts[index][charIndex]);
           setCharIndex((prev) => prev + 1);
         }
-      }, 60);
+      }, 50);
 
       if (charIndex === texts[index].length) {
         setTimeout(() => {
@@ -58,12 +57,22 @@ export default function TerminalIntro({ onFinish }) {
     }
   }, [charIndex, index, started]);
 
+
+
+  
+  const skipTerminal = () => {
+    onSkip();
+  }
+
   return (
     <div className="w-screen h-screen bg-black text-green-400 font-mono flex flex-col items-center justify-center text-lg px-4">
       {started ? (
         <>
           <div className="animate-pulse text-base sm:text-lg md:text-xl lg:text-2xl max-w-screen-md text-center break-words">{currentText}|</div>
           <audio ref={audioRef} src="/audio/music.mp3" />
+
+          <button className="mt-10" onClick={skipTerminal}>Átugrás</button>
+
         </>
       ) : (
         <button
