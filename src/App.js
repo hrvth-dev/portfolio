@@ -18,7 +18,7 @@ export default function App() {
           <Projects />
         </>
       ) : (
-        <TerminalIntro onFinish={() => setShowMainContent(true)} />
+        <TerminalIntro onFinish={() => setShowMainContent(true)} onSkip={() => setShowMainContent(true)} />
       )}
     </>
   );
