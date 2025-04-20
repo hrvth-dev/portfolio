@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef} from 'react';
 import '../App.css';
-import { skillData } from './SkillData';  // Az importot javítottam
+import { skillData } from './SkillData'; 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
