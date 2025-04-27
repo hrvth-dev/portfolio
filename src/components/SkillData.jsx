@@ -10,6 +10,7 @@ import typescript from '../assets/typescript.png';
 import nodejs from "../assets/nodejs.webp";
 import docker from "../assets/docker.webp";
 import java from "../assets/java.png";
+import moleculer from "../assets/moleculer.png";
 
 
 export const skillData = [
@@ -67,5 +68,9 @@ export const skillData = [
     id: 11,
     name: "Java",
     image: java
+  },{
+    id: 12,
+    name: "Moleculer",
+    image: moleculer
   }
 ];
