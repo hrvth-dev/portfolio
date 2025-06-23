@@ -115,11 +115,11 @@ function AboutMe() {
             </p>
             <p className="mt-4 text-lg leading-relaxed">
             Jelenleg a fullstack fejlesztésre összpontosítok. A frontend oldalon főként React és Angular keretrendszerekkel dolgozom, amelyek lehetővé teszik modern és interaktív felhasználói felületek létrehozását. A backend fejlesztéshez Node.js-t használok, amely gyors és skálázható szerveroldali alkalmazások fejlesztésére alkalmas.
-            Programozási nyelvek terén jártas vagyok a JavaScriptben, TypeScriptben és Java nyelvekben.
+            Programozási nyelvek terén jártas vagyok a JavaScriptben, TypeScriptben, és a Java programozási nyelvben.
             </p>
 
             <p className="mt-4 text-lg leading-relaxed">
-            Az adatbázisok terén is igyekszem minél szélesebb körű tapasztalatot szerezni. Adatbázisok terén  egyaránt az SQL és a NoSQL világában igyekszem elmélyíteni a tudásomat.
+            Az adatbázisok terén is igyekszem minél szélesebb körű tapasztalatot szerezni. SQL és NoSQL adatbázisok terén folyamatosan mélyítem a tudásomat, és ezt igyekszem különböző technológiákba integrálni.
             </p>
             <p className="mt-4 text-lg leading-relaxed">
             Szabadidőmben igyekszem tanulmányozni a legújabb technológiákat, valamint a fejlesztési módszereket.
