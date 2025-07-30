@@ -5,14 +5,14 @@ import "../App.css"
 
 const Projects = () => {
 
-  const skillRef = useRef(null)
+  const projectRef = useRef(null)
 
 
 
   useEffect(() => {
 
     gsap.fromTo(
-      skillRef.current,
+      projectRef.current,
       { opacity: 0, y: 50 },
       {
         opacity: 1,
@@ -20,7 +20,7 @@ const Projects = () => {
         duration: 1,
         ease: "power2.inOut",
         scrollTrigger: {
-          trigger: skillRef.current,
+          trigger: projectRef.current,
           start: "top 80%",
           end: "top 60%",
           toggleActions: "play none none none",
@@ -40,7 +40,7 @@ const Projects = () => {
 
 
   return (
-    <div id='skills' ref={skillRef}>
+    <div ref={projectRef}>
 
 <h2 className="text-3xl font-bold text-center  text-white py-6" id='projects'>Projektek</h2>
 
