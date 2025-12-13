@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import me from "../assets/me.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,7 +54,7 @@ function AboutMe() {
       <div className="relative">
         <img
           ref={imageRef}
-          src={me}
+          src="/me.png"
           alt="Profile"
           className="h-50 w-60 rounded-full object-cover shadow-lg border-2 border-white hover:scale-105 transition-transform duration-300"
         />
