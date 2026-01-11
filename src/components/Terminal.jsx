@@ -12,8 +12,7 @@ const texts = [
   "Üdvözöllek Horváth Dávid portfólió oldalán!"
 ];
 
-
-export default function TerminalIntro({ onFinish, onSkip}) {
+export default function TerminalIntro({ onFinish, onSkip }) {
   const [started, setStarted] = useState(false);
   const [currentText, setCurrentText] = useState("");
   const [index, setIndex] = useState(0);
@@ -24,14 +23,36 @@ export default function TerminalIntro({ onFinish, onSkip}) {
     if (!started) return;
 
     const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.volume = 0;       
     audio.play();
+
+    const fadeDuration = 1500; 
+    const targetVolume = 0.15;
+    const steps = 30;
+    const stepTime = fadeDuration / steps;
+    let currentStep = 0;
+
+    const fadeInterval = setInterval(() => {
+      currentStep++;
+      audio.volume = Math.min(
+        targetVolume,
+        (targetVolume / steps) * currentStep
+      );
+      if (currentStep >= steps) clearInterval(fadeInterval);
+    }, stepTime);
 
     const stopTimeout = setTimeout(() => {
       audio.pause();
       audio.currentTime = 0;
-      onFinish(); 
+      onFinish();
     }, 17000);
-    return () => clearTimeout(stopTimeout);
+
+    return () => {
+      clearTimeout(stopTimeout);
+      clearInterval(fadeInterval);
+    };
   }, [started, onFinish]);
 
   useEffect(() => {
@@ -47,7 +68,7 @@ export default function TerminalIntro({ onFinish, onSkip}) {
 
       if (charIndex === texts[index].length) {
         setTimeout(() => {
-          setCurrentText(""); 
+          setCurrentText("");
           setCharIndex(0);
           setIndex((prev) => prev + 1);
         }, 450);
@@ -57,22 +78,27 @@ export default function TerminalIntro({ onFinish, onSkip}) {
     }
   }, [charIndex, index, started]);
 
-
-
-  
   const skipTerminal = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
     onSkip();
-  }
+  };
 
   return (
     <div className="w-screen h-screen bg-black text-green-400 font-mono flex flex-col items-center justify-center text-lg px-4">
       {started ? (
         <>
-          <div className="animate-pulse text-base sm:text-lg md:text-xl lg:text-2xl max-w-screen-md text-center break-words">{currentText}|</div>
-          <audio ref={audioRef} src="/audio/music.mp3" />
+          <div className="animate-pulse text-base sm:text-lg md:text-xl lg:text-2xl max-w-screen-md text-center break-words">
+            {currentText}|
+          </div>
 
-          <button className="mt-10" onClick={skipTerminal}>Átugrás</button>
+          <audio ref={audioRef} src="/audio/music.mp3" loop />
 
+          <button className="mt-10 opacity-70 hover:opacity-100" onClick={skipTerminal}>
+            Átugrás
+          </button>
         </>
       ) : (
         <button
